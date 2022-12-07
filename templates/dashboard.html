@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+  Dashboard
+{% endblock title %}
+
+{% block content %}
+  <h1><small align="center">Welcome {{ session.username }}</small> </h1>
+  <a href="/add_item" class="btn btn-outline-success">Sell an Item</a>
+  <hr>
+  <table class="table table-dark text-white pb-lg-2">
+    <tr>
+      <th>Product Name</th>
+      <th>Item Type</th>
+      <th>Brand</th>
+      <!-- <th>Specs</th> -->
+      <th>Seller</th>
+      <th>Price</th>
+      <!-- <th></th>
+      <th></th> -->
+    </tr>
+    {% for item in items %}
+      <tr>
+        <td> <a href="item/{{ item.id }}">{{ item.name }}</a> </td>
+        <td> {{item.type}} </td>
+        <td> {{item.brand}} </td>
+        <!-- <td> {{item.specs}}</td> -->
+        <td> {{item.seller}}</td>
+        <td> ₱ {{item.price}}.00</td>
+        <!-- <td> <a href="edit_item/{{item.id}}" class="btn btn-outline-info pull-right">Edit</a> </td>
+        <td> 
+          <form action="{{url_for('delete_item', id=item.id)}}" method="POST">
+            <input type="hidden" name="method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-outline-danger">
+          </form>
+        </td> -->
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock content %}

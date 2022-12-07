@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+  List
+{% endblock title %}
+
+{% block content %}
+    <h1>Lists</h1>
+
+    <ul class="list-group">
+      {% for item in items %}
+      <li class="list-group-item">
+        Name: <a href="item/{{ item.id }}">{{ item.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+{% endblock content %}
